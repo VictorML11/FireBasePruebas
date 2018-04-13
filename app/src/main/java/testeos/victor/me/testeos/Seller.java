@@ -35,4 +35,11 @@ public class Seller extends User implements Serializable{
     public void setShops(ArrayList<Shop> shops) {
         this.shops = shops;
     }
+
+    @Override
+    public String toString() {
+        return "Seller{" +
+                "shops=" + shops +
+                '}';
+    }
 }

@@ -51,6 +51,10 @@ public class FoodManager implements Serializable {
 
     }
 
-
-
+    @Override
+    public String toString() {
+        return "FoodManager{" +
+                "foodCategories=" + foodCategories +
+                '}';
+    }
 }

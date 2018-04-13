@@ -13,5 +13,8 @@ public class Admin extends User implements Serializable {
         super(avatar, name);
     }
 
-
+    @Override
+    public String toString() {
+        return "Admin{}";
+    }
 }

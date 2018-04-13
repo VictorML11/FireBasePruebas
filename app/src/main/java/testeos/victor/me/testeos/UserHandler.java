@@ -23,9 +23,9 @@ public class UserHandler implements Serializable{
 
 
     public void initUsersApp(){
-        this.initAdmins();
-        this.initSellers();
-        this.initUsers();
+        //this.initAdmins();
+        //this.initSellers();
+        //this.initUsers();
     }
 
     private void initAdmins(){
@@ -46,6 +46,12 @@ public class UserHandler implements Serializable{
 
 
     }
+    private void initUsers(){
+        this.addUser(new User(123, "Jhon-User"));
+        this.addUser(new User(124, "Sergi-User"));
+        User user = new User(125, "Victor-User");
+        this.addUser(user);
+    }
 
     private void test(){
         FoodManager foodManager = new FoodManager();
@@ -60,7 +66,7 @@ public class UserHandler implements Serializable{
                 Get the user's reviews
                  */
                 for (int i = 0; i < 3; i++){
-                    ShopReview shopReview = new ShopReview("Review numero " + String.valueOf(i), String.valueOf(i));
+                    ShopReview shopReview = new ShopReview(u,"Review numero " + String.valueOf(i), String.valueOf(i));
                     // addShop review to the user
                     u.addShopReview(shopReview);
 
@@ -78,7 +84,7 @@ public class UserHandler implements Serializable{
                 Jhon-Vendedor only has 1 Shop
                 But we should use a for each shop
                  */
-                Shop shop = new Shop(25,1,"Jhon-Tenda", 100,"Title","Description", 934342423, new Location("Barcelona"), s.getName());
+                Shop shop = new Shop(25,1,"Jhon-Tenda", 100,"Title","Description", 934342423, new Location("Barcelona"), s);
 
                 /*
                 Generate the product's shop and register them
@@ -109,12 +115,6 @@ public class UserHandler implements Serializable{
     }
 
 
-    private void initUsers(){
-        this.addUser(new User(123, "Jhon-User"));
-        this.addUser(new User(124, "Sergi-User"));
-        User user = new User(125, "Victor-User");
-        this.addUser(user);
-    }
 
 
     public void addUser(User user){
@@ -139,5 +139,13 @@ public class UserHandler implements Serializable{
             }
         }
         return user;
+    }
+
+
+    @Override
+    public String toString() {
+        return "UserHandler{" +
+                "users=" + users +
+                '}';
     }
 }

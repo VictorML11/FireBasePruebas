@@ -2,6 +2,8 @@ package testeos.victor.me.testeos;
 
 import android.location.Location;
 
+import com.google.firebase.database.Exclude;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -18,7 +20,7 @@ public class Shop implements Serializable{
 
     private Location location;
 
-    private String seller;
+    private transient Seller seller;
     private ArrayList<Integer> shopReviews = new ArrayList<>();
     private ArrayList<FoodProduct> shopProducts = new ArrayList<>();
 
@@ -28,7 +30,7 @@ public class Shop implements Serializable{
 
     public Shop(int shopPhoto, String shopName, String shopTitle,
                 String shopDescription, int shopPhone, Location location,
-                String seller, ArrayList<FoodProduct> shopProducts) {
+                Seller seller, ArrayList<FoodProduct> shopProducts) {
         this.shopId = (int) (Math.random()*100) + 25;;
         this.shopPhoto = shopPhoto;
         this.shopName = shopName;
@@ -44,7 +46,7 @@ public class Shop implements Serializable{
     }
 
 
-    public Shop(int shopId, int shopPhoto, String shopName, int shopValuations, String shopTitle, String shopDescription, int shopPhone, Location location, String seller) {
+    public Shop(int shopId, int shopPhoto, String shopName, int shopValuations, String shopTitle, String shopDescription, int shopPhone, Location location, Seller seller) {
         this.shopId = shopId;
         this.shopPhoto = shopPhoto;
         this.shopName = shopName;
@@ -117,11 +119,12 @@ public class Shop implements Serializable{
         this.location = location;
     }
 
-    public String getSeller() {
+    @Exclude
+    public Seller getSeller() {
         return seller;
     }
 
-    public void setSeller(String seller) {
+    public void setSeller(Seller seller) {
         this.seller = seller;
     }
 

@@ -42,4 +42,11 @@ public class FoodCategory implements Serializable {
         return categoryType;
     }
 
+    @Override
+    public String toString() {
+        return "FoodCategory{" +
+                "categoryType=" + categoryType +
+                ", foodProducts=" + foodProducts +
+                '}';
+    }
 }
